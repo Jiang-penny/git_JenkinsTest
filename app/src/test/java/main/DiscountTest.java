@@ -17,6 +17,13 @@ public class DiscountTest {
 		}
 
 		@Test
+		public void testOverAge() throws Throwable {
+			Identity identity = new Identity(65, false, false);
+			Discount discount = new Discount(identity, dateTime);
+			Assertions.assertEquals(0.8, discount.getDiscount());
+		}
+
+		@Test
 		public void testAgeLessThan() throws Throwable {
 			Identity identity = new Identity(2, false, true);
 			try {
@@ -76,7 +83,7 @@ public class DiscountTest {
 
 	}
 
-	@DisplayName("是會員/團體/年紀/時間")
+	@DisplayName("是會員/團體/時間")
 	@Nested
 	class OtherDiscount{
 		@Test
@@ -93,12 +100,6 @@ public class DiscountTest {
 			Assertions.assertEquals(0.7, discount.getDiscount());
 		}
 
-		@Test
-		public void testIsDroup() throws Throwable {
-			Identity identity = new Identity(65, false, false);
-			Discount discount = new Discount(identity, "2021-05-26 週三 10:30:00");
-			Assertions.assertEquals(0.8, discount.getDiscount());
-		}
 
 		@Test
 		public void testIsTime() throws Throwable {
