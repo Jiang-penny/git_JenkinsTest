@@ -22,7 +22,7 @@ pipeline {
         }
         stage('sonarqube-analysis'){
             environment{
-                SONAR_TOKEN = credentials('{sonarQubeSwimmingPool}')
+                SONAR_TOKEN = credentials('sonarQubeSwimmingPool')
             }
             steps{
                 sh'''./gradlew sonarqube \
